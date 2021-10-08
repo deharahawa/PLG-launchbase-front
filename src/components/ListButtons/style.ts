@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { darken } from "polished";
 
 export const ContainerButton = styled.div`
   display: flex;
@@ -21,6 +22,10 @@ export const ContainerButton = styled.div`
 
     &:hover {
       filter: brightness(0.9);
+    }
+
+    &.isPressed {
+      background: ${darken(0.05, "#1D5E72")};
     }
   }
 `;

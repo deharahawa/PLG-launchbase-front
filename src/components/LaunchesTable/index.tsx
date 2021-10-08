@@ -1,29 +1,39 @@
+import { useLaunches } from "../../hooks/useLaunches";
 import { ContainerTable } from "./style";
 
 export function LaunchesTable() {
+  const { launches, buttonPressed } = useLaunches();
+
   return (
     <ContainerTable>
       <table>
         <thead>
           <tr>
             <th>Nome</th>
-            <th>Sucesso?</th>
+            {buttonPressed === "past" && <th>Sucesso?</th>}
             <th>Detalhes</th>
             <th>Data</th>
           </tr>
         </thead>
-        <tbody>
-          <tr key="trocar">
-            <td>FalconSat</td>
-            <td className="sucesso">{"false"}</td>
-            <td>{"Engine failure at 33 seconds and loss of vehicle"}</td>
-            <td>
-              {new Intl.DateTimeFormat("pt-BR").format(
-                new Date("2006-03-24T22:30:00.000Z")
-              )}
-            </td>
-          </tr>
-        </tbody>
+        {launches &&
+          launches.map((launch) => (
+            <tbody>
+              <tr key={launch.id}>
+                <td>{launch.name}</td>
+                {buttonPressed === "past" && (
+                  <td className={`${launch.success ? "success" : "fail"}`}>
+                    {launch.success ? "Sim" : "Não"}
+                  </td>
+                )}
+                {<td>{launch.details || "Sem detalhes"}</td>}
+                <td>
+                  {new Intl.DateTimeFormat("pt-BR").format(
+                    new Date(launch.date)
+                  )}
+                </td>
+              </tr>
+            </tbody>
+          ))}
       </table>
     </ContainerTable>
   );
