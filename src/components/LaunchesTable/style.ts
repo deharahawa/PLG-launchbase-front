@@ -26,7 +26,7 @@ export const ContainerTable = styled.div`
         color: var(--text-title);
       }
 
-      &.sucess {
+      &.success {
         color: var(--green);
       }
 
