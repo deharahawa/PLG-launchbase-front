@@ -19,14 +19,18 @@ export function LaunchesTable() {
           launches.map((launch) => (
             <tbody>
               <tr key={launch.id}>
-                <td>{launch.name}</td>
+                <td className="name">{launch.name}</td>
                 {buttonPressed === "past" && (
                   <td className={`${launch.success ? "success" : "fail"}`}>
                     {launch.success ? "Sim" : "Não"}
                   </td>
                 )}
-                {<td>{launch.details || "Sem detalhes"}</td>}
-                <td>
+                {
+                  <td className="details">
+                    {launch.details || "Sem detalhes"}
+                  </td>
+                }
+                <td className="date">
                   {new Intl.DateTimeFormat("pt-BR").format(
                     new Date(launch.date)
                   )}

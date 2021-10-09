@@ -16,7 +16,13 @@ export const ContainerButton = styled.div`
     border-radius: 0.25rem;
     height: 3rem;
     width: 18rem;
-    margin-top: 4rem;
+    margin: 4rem 1rem 0;
+
+    @media (max-width: 375px) {
+      margin: 3.5rem 0.5rem 0;
+      height: 3.5rem;
+      padding: 0 1rem;
+    }
 
     transition: filter 0.2s;
 
