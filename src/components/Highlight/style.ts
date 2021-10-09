@@ -5,7 +5,9 @@ export const ContainerHighlight = styled.div`
   grid-template-columns: 1.5fr 2fr;
   gap: 2rem;
   margin-top: -7rem;
-  overflow-x: scroll;
+  @media (max-width: 425px) {
+    overflow-x: scroll;
+  }
 
   div {
     background: var(--shape);
