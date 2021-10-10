@@ -18,7 +18,7 @@ export function LaunchesTable() {
             <th>Data</th>
           </tr>
         </thead>
-        {launches.length > 0 &&
+        {launches &&
           launches.map((launch) => (
             <tbody>
               <tr key={launch.id}>
