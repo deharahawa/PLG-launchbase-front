@@ -27,6 +27,7 @@ export function LaunchesTable() {
           </tr>
         </thead>
         {launches &&
+          typeof launches !== "string" &&
           launches?.map((launch) => (
             <tbody>
               <tr key={launch.id}>
