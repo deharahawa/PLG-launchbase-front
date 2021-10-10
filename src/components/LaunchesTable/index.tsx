@@ -5,6 +5,8 @@ import Loader from "react-loader-spinner";
 export function LaunchesTable() {
   const { launches, loading, buttonPressed } = useLaunches();
 
+  console.log("launches", launches);
+
   return loading || !launches ? (
     <Loader
       type="Rings"
