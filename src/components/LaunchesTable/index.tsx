@@ -6,7 +6,10 @@ export function LaunchesTable() {
   const { launches, loading, buttonPressed, handleLoadData } = useLaunches();
 
   if (typeof launches === "string") {
-    setTimeout(() => handleLoadData("past".toUpperCase()), 1500);
+    setTimeout(() => {
+      handleLoadData("past".toUpperCase());
+      console.log("launches", launches);
+    }, 1500);
   }
 
   return loading ? (
