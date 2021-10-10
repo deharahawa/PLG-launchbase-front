@@ -7,6 +7,10 @@ export const ContainerTable = styled.div`
     width: 100%;
     border-spacing: 0 0.5rem;
 
+    tbody > tr {
+      cursor: pointer;
+    }
+
     th {
       color: var(--text-body);
       font-weight: 400;
