@@ -18,14 +18,18 @@ export function Highlight() {
 
   useEffect(() => {
     async function loadPreviousLaunch() {
-      const response = await api.get<Launch>("/previous");
+      const response = await api.get<Launch>(
+        process.env.API_BASE_URL + "/previous"
+      );
       const data = response.data;
       setPreviousLaunch(data);
       setIsLoading(false);
     }
 
     async function loadNextLaunch() {
-      const response = await api.get<Launch>("/next");
+      const response = await api.get<Launch>(
+        process.env.API_BASE_URL + "/next"
+      );
       const data = response.data;
       setNextLaunch(data);
       setIsLoading(false);
