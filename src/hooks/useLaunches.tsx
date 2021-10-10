@@ -53,6 +53,7 @@ export function LaunchesProvider({ children }: LaunchesProviderProps) {
   }, [buttonPressed]);
 
   async function handleLoadData(path: string) {
+    console.log("Loading data from: ", path);
     setButtonPressed(path);
   }
 
