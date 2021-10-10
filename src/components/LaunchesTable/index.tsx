@@ -25,7 +25,7 @@ export function LaunchesTable() {
           </tr>
         </thead>
         {launches &&
-          launches.map((launch) => (
+          launches?.map((launch) => (
             <tbody>
               <tr key={launch.id}>
                 <td className="name">{launch.name}</td>
