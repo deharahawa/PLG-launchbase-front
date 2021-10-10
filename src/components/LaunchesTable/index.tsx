@@ -1,11 +1,18 @@
 import { useLaunches } from "../../hooks/useLaunches";
 import { ContainerTable } from "./style";
 import Loader from "react-loader-spinner";
+import { useEffect } from "react";
 
 export function LaunchesTable() {
-  const { launches, loading, buttonPressed } = useLaunches();
+  const { launches, loading, buttonPressed, handleLoadData } = useLaunches();
 
   console.log("launches", typeof launches);
+
+  useEffect(() => {
+    if (typeof launches === "string") {
+      handleLoadData(buttonPressed.toUpperCase());
+    }
+  }, [launches, buttonPressed, handleLoadData]);
 
   return loading ? (
     <Loader
