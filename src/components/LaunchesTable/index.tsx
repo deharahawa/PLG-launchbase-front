@@ -2,7 +2,19 @@ import { useLaunches } from "../../hooks/useLaunches";
 import { ContainerTable } from "./style";
 import Loader from "react-loader-spinner";
 
-export function LaunchesTable() {
+interface LaunchInfo {
+  success: boolean;
+  details: string;
+  name: string;
+  date: string;
+}
+interface LaunchesTableProps {
+  onRequestOpenLaunchDetailModal: (launchInfo: LaunchInfo) => void;
+}
+
+export function LaunchesTable({
+  onRequestOpenLaunchDetailModal,
+}: LaunchesTableProps) {
   const { launches, loading, buttonPressed } = useLaunches();
 
   return loading ? (
@@ -28,7 +40,10 @@ export function LaunchesTable() {
           typeof launches !== "string" &&
           launches?.map((launch) => (
             <tbody>
-              <tr key={launch.id}>
+              <tr
+                key={launch.id}
+                onClick={() => onRequestOpenLaunchDetailModal(launch)}
+              >
                 <td className="name">{launch.name}</td>
                 {buttonPressed === "past" && (
                   <td className={`${launch.success ? "success" : "fail"}`}>
