@@ -5,10 +5,9 @@ import Loader from "react-loader-spinner";
 export function LaunchesTable() {
   const { launches, loading, buttonPressed, handleLoadData } = useLaunches();
 
-  console.log("launches", typeof launches);
-
   if (typeof launches === "string") {
-    handleLoadData(buttonPressed.toUpperCase());
+    handleLoadData("upcoming");
+    handleLoadData("past");
   }
 
   return loading ? (
