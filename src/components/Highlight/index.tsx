@@ -36,7 +36,13 @@ export function Highlight() {
   }, []);
 
   return isLoading ? (
-    <Loader type="Rings" color="#43C1CD" height={80} width={80} />
+    <Loader
+      type="Rings"
+      color="#43C1CD"
+      height={80}
+      width={80}
+      timeout={2000}
+    />
   ) : (
     <ContainerHighlight>
       <div>
