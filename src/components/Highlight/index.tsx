@@ -16,8 +16,6 @@ export function Highlight() {
   const [nextLaunch, setNextLaunch] = useState({} as Launch);
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log("Base URL", process.env.REACT_APP_API_BASE_URL);
-
   useEffect(() => {
     async function loadPreviousLaunch() {
       const response = await api.get<Launch>("/api/previous");
