@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { ContainerHighlight } from "./style";
 import Loader from "react-loader-spinner";
-import env from "react-dotenv";
 
 interface Launch {
   id: string;
@@ -17,7 +16,7 @@ export function Highlight() {
   const [nextLaunch, setNextLaunch] = useState({} as Launch);
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log("Base URL", env.REACT_APP_API_BASE_URL);
+  console.log("Base URL", process.env.REACT_APP_API_BASE_URL);
 
   useEffect(() => {
     async function loadPreviousLaunch() {
