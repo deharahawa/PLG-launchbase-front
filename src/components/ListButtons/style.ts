@@ -32,6 +32,8 @@ export const ContainerButton = styled.div`
 
     &.isPressed {
       background: ${darken(0.05, "#1D5E72")};
+      cursor: not-allowed;
+      pointer-events: none;
     }
   }
 `;
