@@ -1,10 +1,13 @@
 import { useLaunches } from "../../hooks/useLaunches";
 import { ContainerTable } from "./style";
+import Loader from "react-loader-spinner";
 
 export function LaunchesTable() {
-  const { launches, buttonPressed } = useLaunches();
+  const { launches, loading, buttonPressed } = useLaunches();
 
-  return (
+  return loading ? (
+    <Loader type="Rings" color="#43C1CD" height={80} width={80} />
+  ) : (
     <ContainerTable>
       <table>
         <thead>

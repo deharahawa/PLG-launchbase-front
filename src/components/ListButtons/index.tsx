@@ -3,7 +3,7 @@ import { useLaunches } from "../../hooks/useLaunches";
 import { ContainerButton } from "./style";
 
 export function ListButtons() {
-  const { handleLoadData } = useLaunches();
+  const { handleLoadData, setLoading } = useLaunches();
   const [type, setType] = useState("past");
 
   useEffect(() => {
@@ -19,13 +19,19 @@ export function ListButtons() {
     <ContainerButton>
       <button
         className={type === buttonTypes.PAST ? "isPressed" : "notPressed"}
-        onClick={() => setType(buttonTypes.PAST)}
+        onClick={() => {
+          setType(buttonTypes.PAST);
+          setLoading(true);
+        }}
       >
         Lançamentos passados
       </button>
       <button
         className={type === buttonTypes.UPCOMING ? "isPressed" : "notPressed"}
-        onClick={() => setType(buttonTypes.UPCOMING)}
+        onClick={() => {
+          setType(buttonTypes.UPCOMING);
+          setLoading(true);
+        }}
       >
         Lançamentos futuros
       </button>

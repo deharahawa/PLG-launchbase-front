@@ -22,7 +22,9 @@ interface LaunchesProviderProps {
 interface LaunchesContextData {
   launches: Launch[];
   buttonPressed: string;
+  loading: boolean;
   handleLoadData: (path: string) => Promise<void>;
+  setLoading: (value: boolean) => void;
 }
 
 const LaunchesContext = createContext<LaunchesContextData>(
@@ -37,12 +39,14 @@ export function useLaunches() {
 
 export function LaunchesProvider({ children }: LaunchesProviderProps) {
   const [launches, setLaunches] = useState<Launch[]>([]);
+  const [loading, setLoading] = useState(true);
   const [buttonPressed, setButtonPressed] = useState("past");
 
   useEffect(() => {
     async function loadLaunches(buttonPressed: string) {
       const response = await api.get<Launch[]>(`/${buttonPressed}`);
       setLaunches(response.data);
+      setLoading(false);
     }
 
     loadLaunches(buttonPressed);
@@ -54,7 +58,7 @@ export function LaunchesProvider({ children }: LaunchesProviderProps) {
 
   return (
     <LaunchesContext.Provider
-      value={{ launches, buttonPressed, handleLoadData }}
+      value={{ launches, loading, buttonPressed, handleLoadData, setLoading }}
     >
       {children}
     </LaunchesContext.Provider>

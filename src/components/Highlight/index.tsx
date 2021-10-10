@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { ContainerHighlight } from "./style";
+import Loader from "react-loader-spinner";
 
 interface Launch {
   id: string;
@@ -13,25 +14,30 @@ interface Launch {
 export function Highlight() {
   const [previousLaunch, setPreviousLaunch] = useState({} as Launch);
   const [nextLaunch, setNextLaunch] = useState({} as Launch);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function loadPreviousLaunch() {
       const response = await api.get<Launch>("/previous");
       const data = response.data;
       setPreviousLaunch(data);
+      setIsLoading(false);
     }
 
     async function loadNextLaunch() {
       const response = await api.get<Launch>("/next");
       const data = response.data;
       setNextLaunch(data);
+      setIsLoading(false);
     }
 
     loadPreviousLaunch();
     loadNextLaunch();
   }, []);
 
-  return (
+  return isLoading ? (
+    <Loader type="Rings" color="#43C1CD" height={80} width={80} />
+  ) : (
     <ContainerHighlight>
       <div>
         <header>
