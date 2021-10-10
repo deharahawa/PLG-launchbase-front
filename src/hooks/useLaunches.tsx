@@ -44,7 +44,7 @@ export function LaunchesProvider({ children }: LaunchesProviderProps) {
 
   useEffect(() => {
     async function loadLaunches(buttonPressed: string) {
-      const response = await api.get<Launch[]>(`/${buttonPressed}`);
+      const response = await api.get<Launch[]>(`/api/${buttonPressed}`);
       setLaunches(response.data);
       setLoading(false);
     }

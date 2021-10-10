@@ -3,7 +3,7 @@ import { ContainerTable } from "./style";
 import Loader from "react-loader-spinner";
 
 export function LaunchesTable() {
-  const { launches, loading, buttonPressed, handleLoadData } = useLaunches();
+  const { launches, loading, buttonPressed } = useLaunches();
 
   return loading ? (
     <Loader
