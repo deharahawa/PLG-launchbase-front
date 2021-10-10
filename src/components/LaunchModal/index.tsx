@@ -1,13 +1,7 @@
 import Modal from "react-modal";
 import { ContainerModal } from "./styles";
 import closeImg from "../../assets/close.svg";
-
-interface LaunchInfo {
-  success: boolean;
-  details: string;
-  name: string;
-  date: string;
-}
+import { LaunchInfo } from "../../types";
 
 interface LaunchDetailModalProps {
   isModalOpen: boolean;

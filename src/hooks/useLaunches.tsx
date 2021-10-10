@@ -6,14 +6,7 @@ import {
   useState,
 } from "react";
 import { api } from "../services/api";
-
-interface Launch {
-  id: string;
-  success: boolean;
-  details: string;
-  name: string;
-  date: string;
-}
+import { Launch } from "../types";
 
 interface LaunchesProviderProps {
   children: ReactNode;

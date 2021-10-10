@@ -1,13 +1,8 @@
 import { useLaunches } from "../../hooks/useLaunches";
 import { ContainerTable } from "./style";
 import Loader from "react-loader-spinner";
+import { LaunchInfo } from "../../types";
 
-interface LaunchInfo {
-  success: boolean;
-  details: string;
-  name: string;
-  date: string;
-}
 interface LaunchesTableProps {
   onRequestOpenLaunchDetailModal: (launchInfo: LaunchInfo) => void;
 }
