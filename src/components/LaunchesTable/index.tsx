@@ -24,7 +24,7 @@ export function LaunchesTable() {
             <th>Data</th>
           </tr>
         </thead>
-        {launches &&
+        {launches && launches.length > 0 ? (
           launches?.map((launch) => (
             <tbody>
               <tr key={launch.id}>
@@ -46,7 +46,10 @@ export function LaunchesTable() {
                 </td>
               </tr>
             </tbody>
-          ))}
+          ))
+        ) : (
+          <span>Dados não encontrados, tente novamente mais tarde!</span>
+        )}
       </table>
     </ContainerTable>
   );
