@@ -37,7 +37,7 @@ export function Dashboard() {
 
   return (
     <Container>
-      <Highlight />
+      <Highlight onRequestOpenLaunchDetailModal={handleOpenLaunchDetailModal} />
       <LaunchesProvider>
         <ListButtons />
         <LaunchesTable
