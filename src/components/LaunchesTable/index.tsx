@@ -6,8 +6,7 @@ export function LaunchesTable() {
   const { launches, loading, buttonPressed, handleLoadData } = useLaunches();
 
   if (typeof launches === "string") {
-    handleLoadData("upcoming");
-    handleLoadData("past");
+    setTimeout(() => handleLoadData("past"), 2000);
   }
 
   return loading ? (
