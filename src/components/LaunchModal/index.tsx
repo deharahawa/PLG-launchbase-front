@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Modal from "react-modal";
 import { ContainerModal } from "./styles";
 import closeImg from "../../assets/close.svg";
