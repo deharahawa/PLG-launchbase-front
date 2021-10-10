@@ -7,7 +7,7 @@ export function LaunchesTable() {
 
   console.log("launches", launches);
 
-  return loading || !launches ? (
+  return loading ? (
     <Loader
       type="Rings"
       color="#43C1CD"
@@ -27,28 +27,38 @@ export function LaunchesTable() {
           </tr>
         </thead>
         {launches && launches.length > 0 ? (
-          launches?.map((launch) => (
-            <tbody>
-              <tr key={launch.id}>
-                <td className="name">{launch.name}</td>
-                {buttonPressed === "past" && (
-                  <td className={`${launch.success ? "success" : "fail"}`}>
-                    {launch.success ? "Sim" : "Não"}
-                  </td>
-                )}
-                {
-                  <td className="details">
-                    {launch.details || "Sem detalhes"}
-                  </td>
-                }
-                <td className="date">
-                  {new Intl.DateTimeFormat("pt-BR").format(
-                    new Date(launch.date)
+          launches?.map((launch) =>
+            typeof launch.name !== "string" ? (
+              <tbody>
+                <tr key={launch.id}>
+                  <td className="name">{launch.name}</td>
+                  {buttonPressed === "past" && (
+                    <td className={`${launch.success ? "success" : "fail"}`}>
+                      {launch.success ? "Sim" : "Não"}
+                    </td>
                   )}
-                </td>
-              </tr>
-            </tbody>
-          ))
+                  {
+                    <td className="details">
+                      {launch.details || "Sem detalhes"}
+                    </td>
+                  }
+                  <td className="date">
+                    {new Intl.DateTimeFormat("pt-BR").format(
+                      new Date(launch.date)
+                    )}
+                  </td>
+                </tr>
+              </tbody>
+            ) : (
+              <Loader
+                type="Rings"
+                color="#43C1CD"
+                height={80}
+                width={80}
+                timeout={2000}
+              />
+            )
+          )
         ) : (
           <span>Dados não encontrados, tente novamente mais tarde!</span>
         )}
